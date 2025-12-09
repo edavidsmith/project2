@@ -1,0 +1,15 @@
+Type,Amount,Reason,Total
+Income,16.00,Income,16.00
+Income,16.00,Income,32.00
+Income,16.00,Income,48.00
+Income,32.00,Income,80.00
+Income,16.00,Income,96.00
+Income,16.00,Income,112.00
+Income,32.00,Income,144.00
+Income,32.00,Income,176.00
+Expense,-20.00,Grocery,156.00
+Expense,-20.00,Grocery,136.00
+Income,16.00,Income,152.00
+Income,88.00,Income,240.00
+Expense,-20.50,Grocery,219.50
+Income,12.50,Income,232.00
