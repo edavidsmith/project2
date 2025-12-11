@@ -141,13 +141,20 @@ class Ui_MainWindow(object):
         self.hoursworked_entry.textEdited.connect(self.income_fields_behavior)
         self.howmuchincome_entry.textEdited.connect(self.income_fields_behavior)
 
-    def radio_behavior(self):
+    def radio_behavior(self) -> None:
+        """
+        This function defines the behavior of the radio buttons
+        """
         if self.income_radio.isChecked():
             self.stackedWidget.setCurrentIndex(0)
         elif self.expense_radio.isChecked():
             self.stackedWidget.setCurrentIndex(1)
 
-    def income_fields_behavior(self):
+    def income_fields_behavior(self) -> None:
+        """
+        This function describes the behavior of the two sets of fields under the "income tab"
+        Notably, this prevents a user from being able to type in both sets of fields at the same time
+        """
         if self.hourlywage_entry.hasFocus() or self.hoursworked_entry.hasFocus():
             self.howmuchincome_entry.clear()
         elif self.howmuchincome_entry.hasFocus():

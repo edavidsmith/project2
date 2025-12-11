@@ -10,7 +10,11 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.expensesubmit_button.clicked.connect(self.submit_expense)
         self.get_budget_amount()
 
-    def get_budget_amount(self):
+    def get_budget_amount(self) -> None:
+        """
+        This function gets the current total budget amount
+        This is used on initializing the GUI to grab the most up-to-date amount for the balance_label widget to display
+        """
         budget_amount = 0.0
         with open("budgetdata.csv", "r", newline="") as csvfile:
             csvreader = csv.reader(csvfile)
@@ -22,7 +26,10 @@ class Logic(QMainWindow, Ui_MainWindow):
 
         self.balance_label.setText(f"${budget_amount:.2f}")
 
-    def submit_income(self):
+    def submit_income(self) -> None:
+        """
+        This function defines what is to occur when pressing the submit button on the income tab
+        """
         try:
             if self.hourlywage_entry.text() and self.hoursworked_entry.text():
                 wage_calculation = float(self.hourlywage_entry.text()) * float(self.hoursworked_entry.text())
@@ -31,6 +38,10 @@ class Logic(QMainWindow, Ui_MainWindow):
                     csvreader = csv.reader(csvfile)
                     for line in csvreader:
                         try:
+                            """
+                            This try catch block prevents the program from crashing when it inevitably
+                            tries to convert the String header in the csv file to a float
+                            """
                             current_total = float(line[-1])
                         except ValueError:
                             current_total = 0.0
@@ -77,7 +88,10 @@ class Logic(QMainWindow, Ui_MainWindow):
         except (ValueError, TypeError):
             self.budget_message.setText("Please Only Enter Numeric Values")
 
-    def submit_expense(self):
+    def submit_expense(self) -> None:
+        """
+        This function defines what is to occur when clicking the submit button under the expenses tab
+        """
         try:
             current_total = 0.0
             expense_amount = float(self.amountofexpense_entry.text())
